@@ -64,7 +64,7 @@
 
     <div class="container">
         <h2>Create Account</h2>
-        <form id="registerForm">
+        <form id="registerForm" onsubmit="return false;">
             <input type="text" id="studentNumber" class="input-field" placeholder="Enter Student Number" required>
             <input type="password" id="password" class="input-field" placeholder="Enter Password" required>
             <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password" required>
@@ -108,18 +108,24 @@
                 return;
             }
 
-            try {
-                // Add student data to Firestore
-                await setDoc(doc(db, "students", studentNumber), {
-                    studentNumber: studentNumber,
-                    password: password
-                });
+            if (studentNumber && password) {
+                try {
+                    // Add student data to Firestore
+                    const studentRef = doc(db, "students", studentNumber);
+                    await setDoc(studentRef, {
+                        studentNumber: studentNumber,
+                        password: password
+                    });
 
-                alert("Account created successfully!");
-                window.location.href = "index.html"; // Redirect back to login
-            } catch (error) {
-                console.error("Error creating account:", error);
-                alert("Error creating account. Please try again.");
+                    // If successful, show success message and redirect
+                    alert("Account created successfully!");
+                    window.location.href = "index.html"; // Redirect to login page
+                } catch (error) {
+                    console.error("Error creating account:", error);
+                    alert("Error creating account. Please try again.");
+                }
+            } else {
+                alert("Please fill in all fields.");
             }
         }
     </script>

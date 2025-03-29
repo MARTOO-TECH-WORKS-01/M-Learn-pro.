@@ -57,7 +57,7 @@
             margin-left: 270px; /* Push the content to the right of the menu */
             flex-grow: 1; /* Ensures content grows to take available space */
             overflow-y: auto; /* Allow scrolling when content is too long */
-            margin-top: 0; /* Bring content closer to the header */
+            margin-top: 10px; /* Bring content closer to the header */
         }
         .content h1 {
             font-size: 2em;
@@ -144,8 +144,8 @@
 </head>
 <body onclick="hideMenu(event)">
     <div class="header">
-        <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span>
-        <img src="M learning logo.jpg" alt="M-Learn Pro Logo" class="logo">
+        <img src="M learning logo.jpg" alt="M-Learn Pro Logo" class="logo"> <!-- Logo now on the right -->
+        <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span> <!-- Hamburger on the left -->
     </div>
     
     <div class="side-menu" id="sideMenu">

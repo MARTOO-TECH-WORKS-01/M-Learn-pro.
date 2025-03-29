@@ -40,9 +40,27 @@
         .btn:hover {
             background-color: #00b300;
         }
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .back-to-login {
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        .back-to-login:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Logo on top -->
+    <div>
+        <img src="M learning logo.jpg" alt="M-Learn Pro Logo" class="logo">
+    </div>
 
     <div class="container">
         <h2>Create Account</h2>
@@ -52,6 +70,11 @@
             <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password" required>
             <button type="button" class="btn" onclick="register()">Register</button>
         </form>
+
+        <!-- Back to login link -->
+        <div class="back-to-login">
+            <a href="index.html" class="back-to-login">Back to Login</a>
+        </div>
     </div>
 
     <!-- Firebase SDK -->

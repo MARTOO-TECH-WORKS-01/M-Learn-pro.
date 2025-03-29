@@ -64,7 +64,7 @@
 
     <div class="container">
         <h2>Create Account</h2>
-        <form id="registerForm" onsubmit="return false;">
+        <form id="registerForm">
             <input type="text" id="studentNumber" class="input-field" placeholder="Enter Student Number" required>
             <input type="password" id="password" class="input-field" placeholder="Enter Password" required>
             <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password" required>
@@ -79,6 +79,7 @@
 
     <!-- Firebase SDK -->
     <script type="module">
+        // Import Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
         import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
@@ -87,7 +88,7 @@
             apiKey: "AIzaSyAdia-RwIoZCJ2GkrxN3skbbGsEkp0Na7g",
             authDomain: "m-learn-pro-73f8d.firebaseapp.com",
             projectId: "m-learn-pro-73f8d",
-            storageBucket: "m-learn-pro-73f8d.firebasestorage.app",
+            storageBucket: "m-learn-pro-73f8d.appspot.com",
             messagingSenderId: "785430767519",
             appId: "1:785430767519:web:56375290779cab2410ffaa",
             measurementId: "G-61VQ29ZTE6"
@@ -98,9 +99,15 @@
         const db = getFirestore(app);
 
         async function register() {
-            const studentNumber = document.getElementById("studentNumber").value;
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
+            const studentNumber = document.getElementById("studentNumber").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+            // Ensure fields are not empty
+            if (!studentNumber || !password || !confirmPassword) {
+                alert("Please fill in all fields.");
+                return;
+            }
 
             // Password matching validation
             if (password !== confirmPassword) {
@@ -108,24 +115,20 @@
                 return;
             }
 
-            if (studentNumber && password) {
-                try {
-                    // Add student data to Firestore
-                    const studentRef = doc(db, "students", studentNumber);
-                    await setDoc(studentRef, {
-                        studentNumber: studentNumber,
-                        password: password
-                    });
+            try {
+                // Add student data to Firestore
+                const studentRef = doc(db, "students", studentNumber);
+                await setDoc(studentRef, {
+                    studentNumber: studentNumber,
+                    password: password
+                });
 
-                    // If successful, show success message and redirect
-                    alert("Account created successfully!");
-                    window.location.href = "index.html"; // Redirect to login page
-                } catch (error) {
-                    console.error("Error creating account:", error);
-                    alert("Error creating account. Please try again.");
-                }
-            } else {
-                alert("Please fill in all fields.");
+                // If successful, show success message and redirect
+                alert("Account created successfully!");
+                window.location.href = "index.html"; // Redirect to login page
+            } catch (error) {
+                console.error("Error creating account:", error);
+                alert("Error creating account. Please check your console.");
             }
         }
     </script>

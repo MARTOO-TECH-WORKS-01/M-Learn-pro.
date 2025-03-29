@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - M-Learn Pro</title>
+    <title>M-Learn Pro - Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #004d00;
+            background-color: #004d00; /* Dark green background */
             color: white;
         }
         .header {
@@ -17,7 +17,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            background-color: #003300;
+            background-color: #003300; /* Slightly darker green */
         }
         .logo {
             width: 100px;
@@ -48,20 +48,32 @@
         }
         .content {
             padding: 20px;
+            margin-left: 270px; /* Push the content to the right of the menu */
         }
-        .footer {
+        .content h1 {
+            font-size: 2em;
+        }
+        .section {
             background-color: #003300;
-            color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .section h2 {
+            font-size: 1.5em;
+        }
+        .section p {
+            font-size: 1em;
+        }
+        .card {
+            background-color: #006600;
             padding: 10px;
-            text-align: center;
-            font-size: 14px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .footer a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
+        .card:hover {
+            background-color: #008000;
         }
     </style>
 </head>
@@ -81,20 +93,56 @@
     </div>
     
     <div class="content">
-        <h1>Welcome to Your Dashboard</h1>
-        <p>Here you can manage your courses, quizzes, assignments, and discussions.</p>
-    </div>
+        <h1>Welcome to M-Learn Pro</h1>
+        <p>Your e-learning platform to explore courses, quizzes, assignments, and more.</p>
 
-    <div class="footer">
-        <p>Contact us: <a href="mailto:infomartooedutech@gmail.com">infomartooedutech@gmail.com</a></p>
-        <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">Facebook</a></p>
-        <p>WhatsApp: <a href="https://wa.me/260950322498" target="_blank">+260 950322498</a></p>
-        <p>© 2025 M-Learn Pro. All rights reserved.</p>
-    </div>
+        <!-- Dashboard Sections -->
+        <div class="section">
+            <h2>Your Courses</h2>
+            <p>Explore the courses you are enrolled in.</p>
+            <div class="card" onclick="window.location='courses.html'">
+                <h3>Course 1: Introduction to Programming</h3>
+            </div>
+            <div class="card" onclick="window.location='courses.html'">
+                <h3>Course 2: Web Development Basics</h3>
+            </div>
+            <div class="card" onclick="window.location='courses.html'">
+                <h3>Course 3: Data Science Fundamentals</h3>
+            </div>
+        </div>
 
+        <div class="section">
+            <h2>Quizzes</h2>
+            <p>Test your knowledge with quizzes.</p>
+            <div class="card" onclick="window.location='quizzes.html'">
+                <h3>Quiz 1: Introduction to Programming</h3>
+            </div>
+            <div class="card" onclick="window.location='quizzes.html'">
+                <h3>Quiz 2: Web Development Basics</h3>
+            </div>
+            <div class="card" onclick="window.location='quizzes.html'">
+                <h3>Quiz 3: Data Science Fundamentals</h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Assignments</h2>
+            <p>Submit your assignments here.</p>
+            <div class="card" onclick="window.location='assignments.html'">
+                <h3>Assignment 1: Programming Project</h3>
+            </div>
+            <div class="card" onclick="window.location='assignments.html'">
+                <h3>Assignment 2: Web Development Project</h3>
+            </div>
+            <div class="card" onclick="window.location='assignments.html'">
+                <h3>Assignment 3: Data Analysis Project</h3>
+            </div>
+        </div>
+    </div>
+    
     <script>
         function toggleMenu(event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevent closing when clicking the menu icon
             var menu = document.getElementById("sideMenu");
             menu.style.left = (menu.style.left === "0px") ? "-250px" : "0px";
         }

@@ -81,6 +81,7 @@
     <script type="module">
         // Import Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
         import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
         // Firebase configuration
@@ -96,6 +97,7 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
         const db = getFirestore(app);
 
         async function register() {
@@ -116,11 +118,16 @@
             }
 
             try {
-                // Add student data to Firestore
-                const studentRef = doc(db, "students", studentNumber);
+                // Create account in Firebase Authentication
+                const email = studentNumber + "@example.com"; // Firebase requires an email format
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Add student data to Firestore (without password)
+                const studentRef = doc(db, "students", user.uid);
                 await setDoc(studentRef, {
                     studentNumber: studentNumber,
-                    password: password
+                    userId: user.uid
                 });
 
                 // If successful, show success message and redirect
@@ -128,7 +135,7 @@
                 window.location.href = "index.html"; // Redirect to login page
             } catch (error) {
                 console.error("Error creating account:", error);
-                alert("Error creating account. Please check your console.");
+                alert("Error: " + error.message);
             }
         }
     </script>

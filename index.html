@@ -51,10 +51,10 @@
         }
     </style>
 </head>
-<body>
+<body onclick="hideMenu(event)">
     <div class="header">
-        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
-        <img src="Mlearn-logo.jpg" alt="M-Learn Pro Logo" class="logo">
+        <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span>
+        <img src="Mlearn logo.jpg" alt="M-Learn Pro Logo" class="logo">
     </div>
     
     <div class="side-menu" id="sideMenu">
@@ -72,12 +72,16 @@
     </div>
     
     <script>
-        function toggleMenu() {
+        function toggleMenu(event) {
+            event.stopPropagation(); // Prevent closing when clicking the menu icon
             var menu = document.getElementById("sideMenu");
-            if (menu.style.left === "0px") {
+            menu.style.left = (menu.style.left === "0px") ? "-250px" : "0px";
+        }
+
+        function hideMenu(event) {
+            var menu = document.getElementById("sideMenu");
+            if (!menu.contains(event.target) && menu.style.left === "0px") {
                 menu.style.left = "-250px";
-            } else {
-                menu.style.left = "0px";
             }
         }
     </script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M-Learn Pro</title>
+    <title>M-Learn Pro - Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,98 +11,73 @@
             padding: 0;
             background-color: #004d00; /* Dark green background */
             color: white;
-        }
-        .header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 15px;
-            background-color: #003300; /* Slightly darker green */
+            height: 100vh;
+            flex-direction: column;
         }
-        .logo {
-            width: 100px;
-            height: auto;
+        .login-container {
+            background-color: #003300;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
         }
-        .menu-icon {
-            font-size: 30px;
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #008000;
+            color: white;
             cursor: pointer;
         }
-        .side-menu {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            left: -250px;
-            top: 0;
-            background-color: #006600;
-            padding-top: 60px;
-            transition: 0.3s;
+        .login-container button:hover {
+            background-color: #00a000;
         }
-        .side-menu a {
+        .links {
+            margin-top: 10px;
+        }
+        .links a {
+            color: #00c0ff;
+            text-decoration: none;
             display: block;
-            padding: 15px;
-            text-decoration: none;
-            color: white;
-        }
-        .side-menu a:hover {
-            background-color: #008000;
-        }
-        .content {
-            padding: 20px;
-        }
-        .footer {
-            background-color: #003300;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-        }
-        .footer a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
+            margin-top: 5px;
         }
     </style>
 </head>
-<body onclick="hideMenu(event)">
-    <div class="header">
-        <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span>
-        <img src="Mlearn logo.jpg" alt="M-Learn Pro Logo" class="logo">
-    </div>
-    
-    <div class="side-menu" id="sideMenu">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="courses.html">Courses</a>
-        <a href="quizzes.html">Quizzes</a>
-        <a href="assignments.html">Assignments</a>
-        <a href="discussions.html">Discussions</a>
-        <a href="logout.html">Logout</a>
-    </div>
-    
-    <div class="content">
-        <h1>Welcome to M-Learn Pro</h1>
-        <p>Your e-learning platform.</p>
-    </div>
-
-    <div class="footer">
-        <p>Contact us: <a href="mailto:infomartooedutech@gmail.com">infomartooedutech@gmail.com</a></p>
-        <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">Facebook</a></p>
-        <p>WhatsApp: <a href="https://wa.me/260950322498" target="_blank">+260 950322498</a></p>
-        <p>© 2025 M-Learn Pro. All rights reserved.</p>
+<body>
+    <div class="login-container">
+        <h2>Student Login</h2>
+        <input type="text" id="username" placeholder="Enter Username" required>
+        <input type="password" id="password" placeholder="Enter Password" required>
+        <button onclick="login()">Login</button>
+        <div class="links">
+            <a href="#">Forgot Password?</a>
+            <a href="#">Sign Up</a>
+        </div>
     </div>
 
     <script>
-        function toggleMenu(event) {
-            event.stopPropagation(); // Prevent closing when clicking the menu icon
-            var menu = document.getElementById("sideMenu");
-            menu.style.left = (menu.style.left === "0px") ? "-250px" : "0px";
-        }
-
-        function hideMenu(event) {
-            var menu = document.getElementById("sideMenu");
-            if (!menu.contains(event.target) && menu.style.left === "0px") {
-                menu.style.left = "-250px";
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (username && password) {
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Please enter both username and password");
             }
         }
     </script>

@@ -26,11 +26,12 @@
         .logo {
             width: 100px;
             height: auto;
-            order: 1; /* Move logo to the right */
+            order: 2; /* Move logo to the right */
         }
         .menu-icon {
             font-size: 30px;
             cursor: pointer;
+            order: 1; /* Move hamburger icon to the left */
         }
         .side-menu {
             width: 250px;
@@ -56,7 +57,7 @@
             margin-left: 270px; /* Push the content to the right of the menu */
             flex-grow: 1; /* Ensures content grows to take available space */
             overflow-y: auto; /* Allow scrolling when content is too long */
-            margin-top: 10px; /* Bring the content up a bit */
+            margin-top: 0; /* Bring content closer to the header */
         }
         .content h1 {
             font-size: 2em;

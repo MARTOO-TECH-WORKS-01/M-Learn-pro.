@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M-Learn Pro - Quizzes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome Icons -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +12,9 @@
             padding: 0;
             background-color: #004d00; /* Dark green background */
             color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure body takes full height */
         }
         .header {
             display: flex;
@@ -49,6 +53,8 @@
         .content {
             padding: 20px;
             margin-left: 270px; /* Push the content to the right of the menu */
+            flex-grow: 1; /* Ensures content grows to take available space */
+            overflow-y: auto; /* Allow scrolling when content is too long */
         }
         .content h1 {
             font-size: 2em;
@@ -81,6 +87,9 @@
             padding: 10px;
             text-align: center;
             font-size: 14px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
         .footer a {
             color: #ffffff;
@@ -88,6 +97,49 @@
         }
         .footer a:hover {
             text-decoration: underline;
+        }
+        .footer i {
+            margin-right: 10px;
+        }
+        /* Footer icons */
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .footer-icons a {
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 200px;
+            }
+            .content {
+                margin-left: 200px; /* Adjust content for smaller screen */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .side-menu {
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: block;
+            }
+            .content {
+                margin-left: 0;
+            }
+            .footer-icons {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -126,9 +178,12 @@
     </div>
 
     <div class="footer">
-        <p>Contact us: <a href="mailto:infomartooedutech@gmail.com">infomartooedutech@gmail.com</a></p>
-        <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">Facebook</a></p>
-        <p>WhatsApp: <a href="https://wa.me/260950322498" target="_blank">+260 950322498</a></p>
+        <p>Contact us:</p>
+        <div class="footer-icons">
+            <a href="mailto:infomartooedutech@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/260950322498" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
         <p>© 2025 M-Learn Pro. All rights reserved.</p>
     </div>
 

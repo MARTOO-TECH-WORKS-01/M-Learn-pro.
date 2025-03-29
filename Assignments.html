@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Learn Pro - Assignments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #004d00; /* Dark green background */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #003300; /* Slightly darker green */
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .side-menu {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            background-color: #006600;
+            padding-top: 60px;
+            transition: 0.3s;
+        }
+        .side-menu a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+        }
+        .side-menu a:hover {
+            background-color: #008000;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 270px; /* Push content to the right of the menu */
+            overflow-y: auto; /* Enable scrolling */
+        }
+        .content h1 {
+            font-size: 2em;
+        }
+        .section {
+            background-color: #003300;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .section h2 {
+            font-size: 1.5em;
+        }
+        .section p {
+            font-size: 1em;
+        }
+        .card {
+            background-color: #006600;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card:hover {
+            background-color: #008000;
+        }
+        .footer {
+            background-color: #003300;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer-icons {
+            margin-top: 10px;
+        }
+        .footer-icons a {
+            color: white;
+            margin: 0 15px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .footer-icons a:hover {
+            color: #008000;
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0;
+                padding: 15px;
+            }
+            .footer {
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body onclick="hideMenu(event)">
+    <div class="header">
+        <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span>
+        <img src="M learning logo.jpg" alt="M learning logo.jpg" class="logo">
+    </div>
+    
+    <div class="side-menu" id="sideMenu">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="courses.html">Courses</a>
+        <a href="quizzes.html">Quizzes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="discussions.html">Discussions</a>
+        <a href="logout.html">Logout</a>
+    </div>
+    
+    <div class="content">
+        <h1>Your Assignments</h1>
+        <p>Submit and track the progress of your assignments.</p>
+
+        <!-- Assignments Section -->
+        <div class="section">
+            <h2>Pending Assignments</h2>
+            <div class="card" onclick="window.location='assignment1.html'">
+                <h3>Assignment 1: Programming Project</h3>
+            </div>
+            <div class="card" onclick="window.location='assignment2.html'">
+                <h3>Assignment 2: Web Development Project</h3>
+            </div>
+            <div class="card" onclick="window.location='assignment3.html'">
+                <h3>Assignment 3: Data Analysis Project</h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Submitted Assignments</h2>
+            <div class="card" onclick="window.location='submitted1.html'">
+                <h3>Assignment 1: Programming Project (Submitted)</h3>
+            </div>
+            <div class="card" onclick="window.location='submitted2.html'">
+                <h3>Assignment 2: Web Development Project (Submitted)</h3>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-icons">
+            <a href="mailto:infomartooedutech@gmail.com" target="_blank">📧</a>
+            <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">🌐</a>
+            <a href="https://wa.me/260950322498" target="_blank">📱</a>
+        </div>
+        <p>© 2025 M-Learn Pro. All rights reserved.</p>
+    </div>
+
+    <script>
+        function toggleMenu(event) {
+            event.stopPropagation(); // Prevent closing when clicking the menu icon
+            var menu = document.getElementById("sideMenu");
+            menu.style.left = (menu.style.left === "0px") ? "-250px" : "0px";
+        }
+
+        function hideMenu(event) {
+            var menu = document.getElementById("sideMenu");
+            if (!menu.contains(event.target) && menu.style.left === "0px") {
+                menu.style.left = "-250px";
+            }
+        }
+    </script>
+</body>
+</html>

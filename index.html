@@ -79,8 +79,8 @@
     <div class="login-container">
         <h2>Student Login</h2>
         <form id="loginForm" onsubmit="return login()">
-            <input type="text" id="BSPH22215254" name="username" class="input-field" placeholder="Enter Username" required>
-            <input type="password" id="GAKPO" name="password" class="input-field" placeholder="Enter Password" required>
+            <input type="text" id="username" name="username" class="input-field" placeholder="Enter Username" required>
+            <input type="password" id="password" name="password" class="input-field" placeholder="Enter Password" required>
             <button type="submit" class="btn">Login</button>
         </form>
         
@@ -94,18 +94,9 @@
 
     <script>
         function login() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
-            // You can replace this with real login validation
-            if (username === "student" && password === "password123") {
-                // Redirect to the dashboard if login is successful
-                window.location.href = "dashboard.html";
-                return false;  // Prevent form submission
-            } else {
-                alert("Invalid username or password. Please try again.");
-                return false;  // Prevent form submission
-            }
+            // No actual validation, login is always successful
+            window.location.href = "dashboard.html";  // Redirect to the dashboard
+            return false;  // Prevent form submission
         }
     </script>
 </body>

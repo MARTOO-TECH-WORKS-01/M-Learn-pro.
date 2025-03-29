@@ -3,78 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M-Learn Pro - Courses</title>
+    <title>Courses - M-Learn Pro</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #004d00; /* Dark green background */
-            color: white;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background-color: #003300; /* Slightly darker green */
-        }
-        .logo {
-            width: 100px;
-            height: auto;
-        }
-        .menu-icon {
-            font-size: 30px;
-            cursor: pointer;
-        }
-        .side-menu {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            left: -250px;
-            top: 0;
-            background-color: #006600;
-            padding-top: 60px;
-            transition: 0.3s;
-        }
-        .side-menu a {
-            display: block;
-            padding: 15px;
-            text-decoration: none;
-            color: white;
-        }
-        .side-menu a:hover {
-            background-color: #008000;
-        }
-        .content {
-            padding: 20px;
-            margin-left: 270px; /* Push the content to the right of the menu */
-        }
-        .content h1 {
-            font-size: 2em;
-        }
-        .section {
-            background-color: #003300;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        .section h2 {
-            font-size: 1.5em;
-        }
-        .section p {
-            font-size: 1em;
-        }
-        .card {
-            background-color: #006600;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .card:hover {
-            background-color: #008000;
-        }
+        /* Same styles as above */
     </style>
 </head>
 <body onclick="hideMenu(event)">
@@ -94,36 +25,19 @@
     
     <div class="content">
         <h1>Your Courses</h1>
-        <p>Explore and manage the courses you're enrolled in.</p>
-
-        <!-- Courses Section -->
-        <div class="section">
-            <h2>Enrolled Courses</h2>
-            <div class="card" onclick="window.location='course1.html'">
-                <h3>Course 1: Introduction to Programming</h3>
-            </div>
-            <div class="card" onclick="window.location='course2.html'">
-                <h3>Course 2: Web Development Basics</h3>
-            </div>
-            <div class="card" onclick="window.location='course3.html'">
-                <h3>Course 3: Data Science Fundamentals</h3>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Suggested Courses</h2>
-            <div class="card" onclick="window.location='course4.html'">
-                <h3>Course 4: Advanced JavaScript</h3>
-            </div>
-            <div class="card" onclick="window.location='course5.html'">
-                <h3>Course 5: Python for Data Analysis</h3>
-            </div>
-        </div>
+        <p>Browse your courses and start learning!</p>
     </div>
-    
+
+    <div class="footer">
+        <p>Contact us: <a href="mailto:infomartooedutech@gmail.com">infomartooedutech@gmail.com</a></p>
+        <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">Facebook</a></p>
+        <p>WhatsApp: <a href="https://wa.me/260950322498" target="_blank">+260 950322498</a></p>
+        <p>© 2025 M-Learn Pro. All rights reserved.</p>
+    </div>
+
     <script>
         function toggleMenu(event) {
-            event.stopPropagation(); // Prevent closing when clicking the menu icon
+            event.stopPropagation();
             var menu = document.getElementById("sideMenu");
             menu.style.left = (menu.style.left === "0px") ? "-250px" : "0px";
         }

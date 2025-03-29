@@ -20,18 +20,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            padding: 10px;
             background-color: #003300; /* Slightly darker green */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
         }
         .logo {
             width: 100px;
             height: auto;
-            order: 2; /* Move logo to the right */
+            order: 2; /* Logo moved to the right */
         }
         .menu-icon {
             font-size: 30px;
             cursor: pointer;
-            order: 1; /* Move hamburger icon to the left */
+            order: 1; /* Hamburger icon moved to the left */
         }
         .side-menu {
             width: 250px;
@@ -54,10 +59,10 @@
         }
         .content {
             padding: 20px;
-            margin-left: 270px; /* Push the content to the right of the menu */
-            flex-grow: 1; /* Ensures content grows to take available space */
-            overflow-y: auto; /* Allow scrolling when content is too long */
-            margin-top: 10px; /* Bring content closer to the header */
+            margin-left: 270px; /* Adjust content position to the right */
+            margin-top: 80px; /* Remove extra space between header and content */
+            flex-grow: 1; /* Allow content to grow */
+            overflow-y: auto; /* Enable scrolling if content exceeds screen size */
         }
         .content h1 {
             font-size: 2em;
@@ -93,6 +98,7 @@
             position: relative;
             bottom: 0;
             width: 100%;
+            z-index: 1000;
         }
         .footer a {
             color: #ffffff;
@@ -144,8 +150,8 @@
 </head>
 <body onclick="hideMenu(event)">
     <div class="header">
-        <img src="M learning logo.jpg" alt="M-Learn Pro Logo" class="logo"> <!-- Logo now on the right -->
         <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span> <!-- Hamburger on the left -->
+        <img src="M learning logo.jpg" alt="M-Learn Pro Logo" class="logo"> <!-- Logo on the right -->
     </div>
     
     <div class="side-menu" id="sideMenu">

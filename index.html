@@ -11,75 +11,85 @@
             padding: 0;
             background-color: #004d00; /* Dark green background */
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+        }
+        .header {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo {
+            width: 150px;
+            height: auto;
         }
         .login-container {
+            max-width: 400px;
+            margin: 0 auto;
             background-color: #003300;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            width: 300px;
-            text-align: center;
         }
         .login-container h2 {
-            margin-bottom: 20px;
+            text-align: center;
         }
-        .login-container input {
+        .input-field {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
-            border: none;
+            border: 1px solid #fff;
+            background-color: #006600;
+            color: white;
             border-radius: 5px;
         }
-        .login-container button {
+        .input-field:focus {
+            outline: none;
+            background-color: #008000;
+        }
+        .btn {
             width: 100%;
             padding: 10px;
+            background-color: #006600;
             border: none;
-            border-radius: 5px;
-            background-color: #008000;
             color: white;
+            border-radius: 5px;
             cursor: pointer;
         }
-        .login-container button:hover {
-            background-color: #00a000;
+        .btn:hover {
+            background-color: #008000;
         }
-        .links {
+        .forgot-password,
+        .signup {
+            text-align: center;
             margin-top: 10px;
         }
-        .links a {
-            color: #00c0ff;
+        .forgot-password a,
+        .signup a {
+            color: #fff;
             text-decoration: none;
-            display: block;
-            margin-top: 5px;
+        }
+        .forgot-password a:hover,
+        .signup a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <img src="M learning logo.jpg" alt="M-Learn Pro Logo" class="logo">
+    </div>
+
     <div class="login-container">
         <h2>Student Login</h2>
-        <input type="text" id="username" placeholder="Enter Username" required>
-        <input type="password" id="password" placeholder="Enter Password" required>
-        <button onclick="login()">Login</button>
-        <div class="links">
+        <form action="dashboard.html" method="post">
+            <input type="text" name="username" class="input-field" placeholder="Enter Username" required>
+            <input type="password" name="password" class="input-field" placeholder="Enter Password" required>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        
+        <div class="forgot-password">
             <a href="#">Forgot Password?</a>
+        </div>
+        <div class="signup">
             <a href="#">Sign Up</a>
         </div>
     </div>
-
-    <script>
-        function login() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            if (username && password) {
-                window.location.href = "dashboard.html";
-            } else {
-                alert("Please enter both username and password");
-            }
-        }
-    </script>
 </body>
 </html>

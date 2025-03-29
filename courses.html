@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses - M-Learn Pro</title>
-    <style>
-        /* Same styles as above */
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body onclick="hideMenu(event)">
+<body>
     <div class="header">
         <span class="menu-icon" onclick="toggleMenu(event)">&#9776;</span>
         <img src="Mlearn logo.jpg" alt="M-Learn Pro Logo" class="logo">
     </div>
     
     <div class="side-menu" id="sideMenu">
-        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Dashboard</a>
         <a href="courses.html">Courses</a>
         <a href="quizzes.html">Quizzes</a>
         <a href="assignments.html">Assignments</a>
@@ -24,30 +22,25 @@
     </div>
     
     <div class="content">
-        <h1>Your Courses</h1>
-        <p>Browse your courses and start learning!</p>
+        <h1>Available Courses</h1>
+        <div class="course-list">
+            <div class="course-item">Introduction to Public Health</div>
+            <div class="course-item">Health Economics and Financing</div>
+            <div class="course-item">Epidemiology and Biostatistics</div>
+            <div class="course-item">Environmental Health Science</div>
+            <div class="course-item">Healthcare Systems and Policies</div>
+        </div>
     </div>
-
-    <div class="footer">
-        <p>Contact us: <a href="mailto:infomartooedutech@gmail.com">infomartooedutech@gmail.com</a></p>
-        <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">Facebook</a></p>
-        <p>WhatsApp: <a href="https://wa.me/260950322498" target="_blank">+260 950322498</a></p>
-        <p>© 2025 M-Learn Pro. All rights reserved.</p>
-    </div>
-
-    <script>
-        function toggleMenu(event) {
-            event.stopPropagation();
-            var menu = document.getElementById("sideMenu");
-            menu.style.left = (menu.style.left === "0px") ? "-250px" : "0px";
-        }
-
-        function hideMenu(event) {
-            var menu = document.getElementById("sideMenu");
-            if (!menu.contains(event.target) && menu.style.left === "0px") {
-                menu.style.left = "-250px";
-            }
-        }
-    </script>
+    
+    <footer>
+        <div class="footer-content">
+            <a href="mailto:infomartooedutech@gmail.com" class="footer-icon">📧</a>
+            <a href="https://www.facebook.com/profile.php?id=61568599103956" class="footer-icon">🔵</a>
+            <a href="https://wa.me/260950322498" class="footer-icon">📱</a>
+            <p>&copy; 2025 Martoo Tech Works. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>

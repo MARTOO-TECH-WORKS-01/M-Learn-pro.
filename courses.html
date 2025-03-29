@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses - M-Learn Pro</title>
+    <title>M-Learn Pro - Courses</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -48,13 +48,42 @@
         }
         .content {
             padding: 20px;
+            margin-left: 270px; /* Push the content to the right of the menu */
+        }
+        .content h1 {
+            font-size: 2em;
+        }
+        .section {
+            background-color: #003300;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .section h2 {
+            font-size: 1.5em;
+        }
+        .section p {
+            font-size: 1em;
+        }
+        .card {
+            background-color: #006600;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card:hover {
+            background-color: #008000;
         }
         .footer {
             background-color: #003300;
             color: white;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
             font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
         .footer a {
             color: #ffffff;
@@ -63,12 +92,17 @@
         .footer a:hover {
             text-decoration: underline;
         }
-        .course-list {
-            list-style: none;
-            padding: 0;
+        .footer-icons {
+            margin-top: 10px;
         }
-        .course-list li {
-            margin: 10px 0;
+        .footer-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .footer-icons a:hover {
+            color: #008000;
         }
     </style>
 </head>
@@ -88,21 +122,45 @@
     </div>
     
     <div class="content">
-        <h1>Available Courses</h1>
-        <ul class="course-list">
-            <li>Course 1: Introduction to Public Health</li>
-            <li>Course 2: Epidemiology Basics</li>
-            <li>Course 3: Health Economics</li>
-            <li>Course 4: Environmental Health</li>
-            <li>Course 5: Research Methods in Public Health</li>
-        </ul>
-    </div>
+        <h1>Your Courses</h1>
+        <p>Explore and manage the courses you're enrolled in.</p>
 
+        <!-- Courses Section -->
+        <div class="section">
+            <h2>Enrolled Courses</h2>
+            <div class="card" onclick="window.location='course1.html'">
+                <h3>Course 1: Introduction to Programming</h3>
+            </div>
+            <div class="card" onclick="window.location='course2.html'">
+                <h3>Course 2: Web Development Basics</h3>
+            </div>
+            <div class="card" onclick="window.location='course3.html'">
+                <h3>Course 3: Data Science Fundamentals</h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Suggested Courses</h2>
+            <div class="card" onclick="window.location='course4.html'">
+                <h3>Course 4: Advanced JavaScript</h3>
+            </div>
+            <div class="card" onclick="window.location='course5.html'">
+                <h3>Course 5: Python for Data Analysis</h3>
+            </div>
+        </div>
+    </div>
+    
     <div class="footer">
         <p>Contact us: <a href="mailto:infomartooedutech@gmail.com">infomartooedutech@gmail.com</a></p>
         <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">Facebook</a></p>
         <p>WhatsApp: <a href="https://wa.me/260950322498" target="_blank">+260 950322498</a></p>
         <p>© 2025 M-Learn Pro. All rights reserved.</p>
+
+        <div class="footer-icons">
+            <a href="mailto:infomartooedutech@gmail.com" target="_blank">📧</a>
+            <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">🌐</a>
+            <a href="https://wa.me/260950322498" target="_blank">📱</a>
+        </div>
     </div>
 
     <script>

@@ -49,6 +49,20 @@
         .content {
             padding: 20px;
         }
+        .footer {
+            background-color: #003300;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body onclick="hideMenu(event)">
@@ -58,19 +72,26 @@
     </div>
     
     <div class="side-menu" id="sideMenu">
-        <a href="dashboard.html" onclick="closeMenu()">Dashboard</a>
-        <a href="courses.html" onclick="closeMenu()">Courses</a>
-        <a href="quizzes.html" onclick="closeMenu()">Quizzes</a>
-        <a href="assignments.html" onclick="closeMenu()">Assignments</a>
-        <a href="discussions.html" onclick="closeMenu()">Discussions</a>
-        <a href="logout.html" onclick="closeMenu()">Logout</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="courses.html">Courses</a>
+        <a href="quizzes.html">Quizzes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="discussions.html">Discussions</a>
+        <a href="logout.html">Logout</a>
     </div>
     
     <div class="content">
         <h1>Welcome to M-Learn Pro</h1>
         <p>Your e-learning platform.</p>
     </div>
-    
+
+    <div class="footer">
+        <p>Contact us: <a href="mailto:infomartooedutech@gmail.com">infomartooedutech@gmail.com</a></p>
+        <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61568599103956" target="_blank">Facebook</a></p>
+        <p>WhatsApp: <a href="https://wa.me/260950322498" target="_blank">+260 950322498</a></p>
+        <p>© 2025 M-Learn Pro. All rights reserved.</p>
+    </div>
+
     <script>
         function toggleMenu(event) {
             event.stopPropagation(); // Prevent closing when clicking the menu icon
@@ -83,11 +104,6 @@
             if (!menu.contains(event.target) && menu.style.left === "0px") {
                 menu.style.left = "-250px";
             }
-        }
-
-        function closeMenu() {
-            var menu = document.getElementById("sideMenu");
-            menu.style.left = "-250px"; // Close the menu after clicking on a link
         }
     </script>
 </body>

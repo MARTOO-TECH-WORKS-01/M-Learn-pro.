@@ -77,28 +77,15 @@
         </div>
     </div>
 
-    <!-- Firebase SDK -->
+    <!-- Supabase SDK -->
     <script type="module">
-        // Import Firebase modules
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+        // Import Supabase client library
+        import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAdia-RwIoZCJ2GkrxN3skbbGsEkp0Na7g",
-            authDomain: "m-learn-pro-73f8d.firebaseapp.com",
-            projectId: "m-learn-pro-73f8d",
-            storageBucket: "m-learn-pro-73f8d.appspot.com",
-            messagingSenderId: "785430767519",
-            appId: "1:785430767519:web:56375290779cab2410ffaa",
-            measurementId: "G-61VQ29ZTE6"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+        // Supabase credentials
+        const supabaseUrl = 'https://pxsipddyswegrdyasivx.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4c2lwZGR5c3dlZ3JkeWFzaXZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMyOTAzNjEsImV4cCI6MjA1ODg2NjM2MX0.QqldYvuKI6ow8rr3cZmu3OxiAMh-0srKeDTW_XXzVW4'; 
+        const supabase = createClient(supabaseUrl, supabaseKey);
 
         async function register() {
             const studentNumber = document.getElementById("studentNumber").value.trim();
@@ -118,24 +105,35 @@
             }
 
             try {
-                // Create account in Firebase Authentication
-                const email = studentNumber + "@example.com"; // Firebase requires an email format
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-
-                // Add student data to Firestore (without password)
-                const studentRef = doc(db, "students", user.uid);
-                await setDoc(studentRef, {
-                    studentNumber: studentNumber,
-                    userId: user.uid
+                // Create account using Supabase Auth
+                const { user, error } = await supabase.auth.signUp({
+                    email: studentNumber + "@example.com", // Firebase requires an email format
+                    password: password
                 });
+
+                if (error) {
+                    console.error("Error creating account:", error.message);
+                    alert("Error: " + error.message);
+                    return;
+                }
+
+                // Add student data to Supabase table (excluding the password)
+                const { data, error: insertError } = await supabase
+                    .from('students')
+                    .insert([{ student_number: studentNumber, user_id: user.id }]);
+
+                if (insertError) {
+                    console.error("Error adding student data:", insertError.message);
+                    alert("Error: " + insertError.message);
+                    return;
+                }
 
                 // If successful, show success message and redirect
                 alert("Account created successfully!");
                 window.location.href = "index.html"; // Redirect to login page
             } catch (error) {
                 console.error("Error creating account:", error);
-                alert("Error: " + error.message);
+                alert("Error creating account. Please check your console.");
             }
         }
     </script>

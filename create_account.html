@@ -79,14 +79,15 @@
 
     <!-- Supabase SDK -->
     <script type="module">
-        // Import Supabase client library
+        // Import Supabase client
         import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
-        // Supabase credentials
-        const supabaseUrl = 'https://pxsipddyswegrdyasivx.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4c2lwZGR5c3dlZ3JkeWFzaXZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMyOTAzNjEsImV4cCI6MjA1ODg2NjM2MX0.QqldYvuKI6ow8rr3cZmu3OxiAMh-0srKeDTW_XXzVW4'; 
+        // Supabase configuration
+        const supabaseUrl = 'https://pxsipddyswegrdyasivx.supabase.co'; // Your Supabase URL
+        const supabaseKey = 'YOUR_SUPABASE_API_KEY'; // Your Supabase API Key
         const supabase = createClient(supabaseUrl, supabaseKey);
 
+        // Register function
         async function register() {
             const studentNumber = document.getElementById("studentNumber").value.trim();
             const password = document.getElementById("password").value.trim();
@@ -106,8 +107,8 @@
 
             try {
                 // Create account using Supabase Auth
-                const { user, error } = await supabase.auth.signUp({
-                    email: studentNumber + "@example.com", // Firebase requires an email format
+                const { data, error } = await supabase.auth.signUp({
+                    email: studentNumber + "@example.com", // Creating a unique email for each student
                     password: password
                 });
 
@@ -117,10 +118,13 @@
                     return;
                 }
 
-                // Add student data to Supabase table (excluding the password)
-                const { data, error: insertError } = await supabase
+                // Add student data to Supabase database (without password)
+                const { data: studentData, error: insertError } = await supabase
                     .from('students')
-                    .insert([{ student_number: studentNumber, user_id: user.id }]);
+                    .insert([{
+                        student_number: studentNumber,
+                        user_id: data.user.id // User ID returned by Supabase
+                    }]);
 
                 if (insertError) {
                     console.error("Error adding student data:", insertError.message);

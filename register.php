@@ -1,9 +1,9 @@
 <?php
 // Database connection details
-$host = "sql113.infinityfree.com"; // Your MySQL Host
-$username = "if0_38632840"; // Your MySQL Username
-$password = "your_vpanel_password"; // Your MySQL Password (same as vPanel)
-$database = "if0_38632840_mlearn_db"; // Your Database Name
+$host = "sql113.infinityfree.com";
+$username = "if0_38632840";
+$password = "xIw72eCPFLD";
+$database = "if0_38632840_mlearn_db";
 
 // Connect to the database
 $conn = new mysqli($host, $username, $password, $database);

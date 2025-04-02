@@ -84,6 +84,11 @@
         .Rgister a:hover {
             background-color: #008000;
         }
+        #login-message {
+            text-align: center;
+            margin-top: 10px;
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -93,27 +98,51 @@
 
     <div class="login-container">
         <h2>Student Login</h2>
-        <form id="loginForm" onsubmit="return login()">
-            <input type="text" id="username" name="username" class="input-field" placeholder="Enter Username" required>
+        <form id="loginForm">
+            <input type="text" id="studentNumber" name="studentNumber" class="input-field" placeholder="Enter Student Number" required>
             <input type="password" id="password" name="password" class="input-field" placeholder="Enter Password" required>
             <button type="submit" class="btn">Login</button>
         </form>
-        
+
+        <p id="login-message"></p> <!-- To display login messages -->
+
         <div class="forgot-password">
             <a href="#">Forgot Password?</a>
         </div>
-        
+
         <div class="Rgister">
             <a href="create_account.html">Create Account</a> <!-- Redirects to create_account.html -->
         </div>
     </div>
 
     <script>
-        function login() {
-            // No actual validation, login is always successful
-            window.location.href = "dashboard.html";  // Redirect to the dashboard
-            return false;  // Prevent form submission
-        }
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent normal form submission
+
+            var studentNumber = document.getElementById("studentNumber").value;
+            var password = document.getElementById("password").value;
+            var loginMessage = document.getElementById("login-message");
+
+            var formData = new FormData();
+            formData.append("studentNumber", studentNumber);
+            formData.append("password", password);
+
+            fetch("https://your-infinityfree-site/login.php", { 
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = "dashboard.html"; // Redirect if login is successful
+                } else {
+                    loginMessage.innerHTML = data.message; // Show error message
+                }
+            })
+            .catch(error => {
+                loginMessage.innerHTML = "Error connecting to the server.";
+            });
+        });
     </script>
 </body>
 </html>

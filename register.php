@@ -1,0 +1,41 @@
+<?php
+// Database connection details
+$host = "sql113.infinityfree.com"; // Your MySQL Host
+$username = "if0_38632840"; // Your MySQL Username
+$password = "your_vpanel_password"; // Your MySQL Password (same as vPanel)
+$database = "if0_38632840_mlearn_db"; // Your Database Name
+
+// Connect to the database
+$conn = new mysqli($host, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die(json_encode(["success" => false, "message" => "Database connection failed"]));
+}
+
+// Get user input from the form (sent via POST)
+$studentNumber = $_POST['studentNumber'] ?? '';
+$plainPassword = $_POST['password'] ?? '';
+
+// Validate input
+if (empty($studentNumber) || empty($plainPassword)) {
+    die(json_encode(["success" => false, "message" => "All fields are required"]));
+}
+
+// Hash the password for security
+$hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
+
+// Prepare SQL statement to prevent SQL injection
+$stmt = $conn->prepare("INSERT INTO students (STUDENT_NUMBER, PASSWORD) VALUES (?, ?)");
+$stmt->bind_param("ss", $studentNumber, $hashedPassword);
+
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "message" => "Account created successfully"]);
+} else {
+    echo json_encode(["success" => false, "message" => "Error: " . $stmt->error]);
+}
+
+// Close statement and connection
+$stmt->close();
+$conn->close();
+?>

@@ -22,6 +22,18 @@ if (empty($studentNumber) || empty($plainPassword)) {
     die(json_encode(["success" => false, "message" => "All fields are required"]));
 }
 
+// Check if the student number already exists
+$checkQuery = "SELECT * FROM students WHERE student_number = ?";
+$stmt = $conn->prepare($checkQuery);
+$stmt->bind_param("s", $studentNumber);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    echo json_encode(["success" => false, "message" => "Student number already exists!"]);
+    exit;
+}
+
 // Hash the password for security
 $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
 

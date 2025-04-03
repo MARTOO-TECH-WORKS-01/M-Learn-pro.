@@ -56,7 +56,6 @@
     </style>
 </head>
 <body>
-
     <div>
         <img src="M learning logo.jpg" alt="M-Learn Pro Logo" class="logo">
     </div>
@@ -90,17 +89,15 @@
                 return;
             }
 
-            const sheetUrl = "https://script.google.com/macros/s/AKfycbylj9NUnBkRbfKNqXobgv27cjh3SCREnMXnMBb9Ee3UnuUK2B-xTK-mA99yN0VAtrQe/exec"; 
-            const requestBody = {
-                studentNumber: studentNumber,
-                password: password
-            };
+            const apiUrl = "https://m-learning.my-board.org/register.php"; 
+            const requestBody = new FormData();
+            requestBody.append("studentNumber", studentNumber);
+            requestBody.append("password", password);
 
             try {
-                const response = await fetch(sheetUrl, {
+                const response = await fetch(apiUrl, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(requestBody)
+                    body: requestBody
                 });
                 const result = await response.json();
                 if (result.success) {
@@ -111,7 +108,7 @@
                 }
             } catch (error) {
                 console.error("Error:", error);
-                alert("Failed to register. Please try Again.");
+                alert("Failed to register. Please try again.");
             }
         }
     </script>
